@@ -5,6 +5,16 @@ import { Button } from "./ui/button";
 import { usePathname } from "next/navigation";
 import { twMerge } from "tailwind-merge";
 import Link from "next/link";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Input } from "./ui/input";
+import { Checkbox } from "./ui/checkbox";
 
 const Navbar = ({ children }: { children: React.ReactNode }) => {
   const pathname = usePathname();
@@ -32,7 +42,29 @@ const Navbar = ({ children }: { children: React.ReactNode }) => {
                 className="relative w-full h-full object-contain"
               />
               <div className="absolute right-0 p-2">
-                <Button className="tracking-wider">SUBSCRIBE NOW</Button>
+                <Dialog>
+                  <DialogTrigger>
+                    <Button className="tracking-wider">SUBSCRIBE NOW</Button>
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle>Subscribe Now</DialogTitle>
+                    </DialogHeader>
+                    <div>
+                      <div className="flex flex-col">
+                        <div className="flex flex-col gap-4">
+                          <Input placeholder="Full Name" />
+                          <Input placeholder="Email Address" />
+                          <Input placeholder="Contact No." />
+                          <div className="flex gap-2 mt-6 text-xs">
+                            <Checkbox />I accept Terms & Conditions
+                          </div>
+                          <Button variant={"sub"}>Subscribe</Button>
+                        </div>
+                      </div>
+                    </div>
+                  </DialogContent>
+                </Dialog>
               </div>
             </div>
           </div>
