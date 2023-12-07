@@ -3,7 +3,7 @@ import Image from "next/image";
 import React from "react";
 
 async function getData() {
-  const query = `*[_type == "post" && overview == "Places" && overview == "Art" && overview == "People" && overview == "Things"]`;
+  const query = `*[_type == "post" && overview == "Places" || overview == "Art" || overview == "People" || overview == "Things"]`;
   const data = await client.fetch(query);
   return data;
 }
